@@ -1,6 +1,6 @@
 {
   "name": "vuex-extended",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "extends vuex with some additional mappers and functions",
   "main": "src/index.js",
   "scripts": {
@@ -8,10 +8,14 @@
     "build": "webpack --mode=production"
   },
   "keywords": [
-    "vuex"
+    "vuex", "map", "mapper", "mapEntry", "mapField"
   ],
   "author": "David Christmann",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cimchd/vuex-extened"
+  },
   "dependencies": {
     "lodash": "^4.17.11",
     "vue": "^2.6.10",
