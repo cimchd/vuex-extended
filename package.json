@@ -2,13 +2,17 @@
   "name": "vuex-extended",
   "version": "1.0.2",
   "description": "extends vuex with some additional mappers and functions",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode=production"
+    "build": "babel src -d dist"
   },
   "keywords": [
-    "vuex", "map", "mapper", "mapEntry", "mapField"
+    "vuex",
+    "map",
+    "mapper",
+    "mapEntry",
+    "mapField"
   ],
   "author": "David Christmann",
   "license": "MIT",
@@ -22,7 +26,8 @@
     "vuex": "^3.1.0"
   },
   "devDependencies": {
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3"
   }
 }
