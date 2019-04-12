@@ -1,17 +1,17 @@
-import { get as lodashGet } from 'lodash';
+import computedGetterSetter from './computedGetterSetter';
 
-export default function mapSingleEntry(path, alias) {
-  // create computed getter and setter
-  const returnObject = {};
-  returnObject[alias] = {
-    get() {
-      return lodashGet(this, `$store.state.${path}`);
-    },
-    set(value) {
-      this.$store.commit('setEntry', [path, value]);
-    }
-  };
+export default function mapSingleEntry(path, aliases) {
+  // check parameter
+  if (typeof aliases !== 'object') throw Error('Wrong parameter');
+  if (Object.keys(aliases).length > 1) throw Error('Wrong parameter');
+
+  // set alias and path
+  const alias = Object.keys(aliases)[0];
+  if (!path) path = aliases[alias];
+  else path += `.${aliases[alias]}`;
 
   // return computed getter and setter
+  const returnObject = {};
+  returnObject[alias] = computedGetterSetter(path);
   return returnObject;
 }
