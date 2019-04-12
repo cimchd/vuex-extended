@@ -1,4 +1,4 @@
 src
 .idea
-.yarn.lock
+yarn.lock
 .babelrc
