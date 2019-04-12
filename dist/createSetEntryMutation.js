@@ -25,8 +25,7 @@ var _default = {
         pathParam = _ref2[0],
         value = _ref2[1];
 
-    console.log('setEntry'); // convert array like syntax to dot syntax
-
+    // convert array like syntax to dot syntax
     var pathModified = pathParam.replace(/\["/g, '.');
     pathModified = pathModified.replace(/\['/g, '.');
     pathModified = pathModified.replace(/\[/g, '.');
@@ -40,7 +39,6 @@ var _default = {
     var storeEntry = stateFromStore;
 
     _.forEach(pathSplit, function (key, index) {
-      console.log(key);
       storeEntry = storeEntry[key];
 
       if (!storeEntry) {

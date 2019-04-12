@@ -3,7 +3,6 @@ import isIndex from './helper/isIndex';
 
 export default {
   setEntry(stateFromStore, [pathParam, value]) {
-    console.log('setEntry');
     // convert array like syntax to dot syntax
     let pathModified = pathParam.replace(/\["/g, '.');
     pathModified = pathModified.replace(/\['/g, '.');
@@ -19,7 +18,6 @@ export default {
     // Object
     let storeEntry = stateFromStore;
     _.forEach(pathSplit, (key, index) => {
-      console.log(key);
       storeEntry = storeEntry[key];
       if (!storeEntry) {
         // init empty objects
