@@ -1,6 +1,10 @@
 import {isArray as lodashIsArray, isObject as lodashIsObject} from 'lodash';
+import convertPathToDotNotation from './convertPathToDotNotation';
 
 export default function normalizeParams(path, aliases) {
+  // convert path to dot notation
+  path = convertPathToDotNotation(path);
+
   const pathParts = path.split('.');
   const lastPart = pathParts[pathParts.length - 1];
 
@@ -15,7 +19,8 @@ export default function normalizeParams(path, aliases) {
 
     // adjust path
     if (pathParts.length > 1) {
-      path = pathParts.splice(-1, 1).join('.');
+      pathParts.splice(-1, 1);
+      path = pathParts.join('.');
     } else {
       path = '';
     }
