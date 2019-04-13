@@ -9,6 +9,8 @@ var _vue = _interopRequireDefault(require("vue"));
 
 var _isIndex = _interopRequireDefault(require("./helper/isIndex"));
 
+var _convertPathToDotNotation = _interopRequireDefault(require("./helper/convertPathToDotNotation"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -25,13 +27,7 @@ var _default = {
         pathParam = _ref2[0],
         value = _ref2[1];
 
-    // convert array like syntax to dot syntax
-    var pathModified = pathParam.replace(/\["/g, '.');
-    pathModified = pathModified.replace(/\['/g, '.');
-    pathModified = pathModified.replace(/\[/g, '.');
-    pathModified = pathModified.replace(/"]/g, '');
-    pathModified = pathModified.replace(/']/g, '');
-    pathModified = pathModified.replace(/]/g, ''); // Split path
+    var pathModified = (0, _convertPathToDotNotation["default"])(pathParam); // Split path
 
     var pathSplit = pathModified.split('.');
     var field = pathSplit.pop(); // Object

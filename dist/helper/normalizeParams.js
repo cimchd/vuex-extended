@@ -7,7 +7,13 @@ exports["default"] = normalizeParams;
 
 var _lodash = require("lodash");
 
+var _convertPathToDotNotation = _interopRequireDefault(require("./convertPathToDotNotation"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
 function normalizeParams(path, aliases) {
+  // convert path to dot notation
+  path = (0, _convertPathToDotNotation["default"])(path);
   var pathParts = path.split('.');
   var lastPart = pathParts[pathParts.length - 1]; // if no aliases are given, map only last entry of path
 
@@ -19,7 +25,8 @@ function normalizeParams(path, aliases) {
     aliases = [obj]; // adjust path
 
     if (pathParts.length > 1) {
-      path = pathParts.splice(-1, 1).join('.');
+      pathParts.splice(-1, 1);
+      path = pathParts.join('.');
     } else {
       path = '';
     }

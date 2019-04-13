@@ -1,15 +1,10 @@
 import Vue from 'vue';
 import isIndex from './helper/isIndex';
+import convertPathToDotNotation from './helper/convertPathToDotNotation';
 
 export default {
   setEntry(stateFromStore, [pathParam, value]) {
-    // convert array like syntax to dot syntax
-    let pathModified = pathParam.replace(/\["/g, '.');
-    pathModified = pathModified.replace(/\['/g, '.');
-    pathModified = pathModified.replace(/\[/g, '.');
-    pathModified = pathModified.replace(/"]/g, '');
-    pathModified = pathModified.replace(/']/g, '');
-    pathModified = pathModified.replace(/]/g, '');
+    const pathModified = convertPathToDotNotation(pathParam);
 
     // Split path
     const pathSplit = pathModified.split('.');
