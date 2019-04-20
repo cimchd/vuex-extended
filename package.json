@@ -1,6 +1,6 @@
 {
   "name": "vuex-extended",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Extends vuex with some additional mappers and functions.",
   "main": "dist/index.js",
   "scripts": {

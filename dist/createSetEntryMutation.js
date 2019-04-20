@@ -46,9 +46,9 @@ var _default = {
         } else {
           _vue["default"].set(storeEntry, key, {});
         }
-
-        storeEntry = storeEntry[key];
       }
+
+      storeEntry = storeEntry[key];
     }); // set reactivity
 
 

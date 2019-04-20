@@ -24,8 +24,8 @@ export default {
         } else {
           Vue.set(storeEntry, key, {});
         }
-        storeEntry = storeEntry[key];
       }
+      storeEntry = storeEntry[key];
     });
     // set reactivity
     Vue.set(storeEntry, field, value);
