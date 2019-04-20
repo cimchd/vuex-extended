@@ -11,6 +11,8 @@ var _isIndex = _interopRequireDefault(require("./helper/isIndex"));
 
 var _convertPathToDotNotation = _interopRequireDefault(require("./helper/convertPathToDotNotation"));
 
+var _lodash = require("lodash");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -27,6 +29,8 @@ var _default = {
         pathParam = _ref2[0],
         value = _ref2[1];
 
+    // check for right parameter syntax
+    if (!(0, _lodash.isString)(pathParam)) throw Error('Wrong parameters in setEntry. Call it with an array of path and value.');
     var pathModified = (0, _convertPathToDotNotation["default"])(pathParam); // Split path
 
     var pathSplit = pathModified.split('.');
@@ -35,15 +39,15 @@ var _default = {
     var storeEntry = stateFromStore;
 
     _.forEach(pathSplit, function (key, index) {
-      storeEntry = storeEntry[key];
-
-      if (!storeEntry) {
+      if (!storeEntry[key]) {
         // init empty objects
         if (pathSplit.length > index + 1 && (0, _isIndex["default"])(pathSplit[index + 1])) {
-          storeEntry = [];
+          _vue["default"].set(storeEntry, key, []);
         } else {
-          storeEntry = {};
+          _vue["default"].set(storeEntry, key, {});
         }
+
+        storeEntry = storeEntry[key];
       }
     }); // set reactivity
 
